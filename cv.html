@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Mahmoud Hamed — Pharmacist CV</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  :root {
+    --teal-900: #06352f;
+    --teal-700: #0b5c56;
+    --teal-600: #0f766e;
+    --ink: #10262c;
+    --muted: #4a6470;
+    --line: #d9e8e4;
+    --mint: #f2f9f7;
+  }
+  html, body { margin: 0; padding: 0; background: #eef3f2; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .toolbar {
+    max-width: 210mm; margin: 24px auto 10px; display: flex; justify-content: flex-end; gap: 10px;
+  }
+  .toolbar button, .toolbar a {
+    font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none;
+    padding: 9px 16px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--teal-700);
+  }
+  .toolbar button { background: var(--teal-700); color: #fff; border-color: var(--teal-700); }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 24px;
+    background: #fff;
+    box-shadow: 0 10px 40px rgba(6, 53, 47, .12);
+    padding: 13mm 14mm 11mm;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* Header */
+  .cv-head {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+    padding-bottom: 9px; border-bottom: 2.5px solid var(--teal-700);
+  }
+  .cv-name {
+    font-size: 31px; font-weight: 800; letter-spacing: -.6px; line-height: 1.04; margin: 0 0 5px;
+  }
+  .cv-role {
+    font-size: 12px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; color: var(--teal-600);
+  }
+  .cv-contact { text-align: right; font-size: 10.4px; color: var(--muted); line-height: 1.75; }
+  .cv-contact span { display: block; }
+  .cv-contact strong { color: var(--ink); font-weight: 600; }
+
+  .availability {
+    display: inline-block; margin-top: 8px; font-size: 9.2px; font-weight: 700;
+    letter-spacing: .6px; text-transform: uppercase; color: var(--teal-700);
+    background: #e7f3f0; border: 1px solid #cfe6e0; border-radius: 999px; padding: 3px 9px;
+  }
+
+  /* Layout */
+  .cv-body { display: grid; grid-template-columns: 1fr 60mm; gap: 10mm; padding-top: 14px; flex: 1; }
+  .main-col { min-width: 0; }
+  .side-col { min-width: 0; }
+
+  .sec { margin-bottom: 15px; }
+  .sec:last-child { margin-bottom: 0; }
+  .sec-title {
+    font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--teal-700); margin: 0 0 6px; padding-bottom: 3px; border-bottom: 1px solid var(--line);
+  }
+  .side-col .sec-title { font-size: 10.2px; }
+
+  p { margin: 0; }
+  .summary { font-size: 11.9px; line-height: 1.55; color: #33484f; }
+  .summary strong { color: var(--ink); }
+
+  .job { margin-bottom: 13px; }
+  .job:last-child { margin-bottom: 0; }
+  .job-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .job h3 { font-size: 12.8px; font-weight: 700; margin: 0; line-height: 1.25; }
+  .job .when { font-size: 10px; font-weight: 600; color: var(--teal-600); white-space: nowrap; }
+  .job .org { font-size: 11.2px; color: var(--teal-700); font-weight: 600; margin: 1px 0 2px; }
+  .job .note { font-size: 10.6px; color: var(--muted); font-style: italic; margin-bottom: 2px; }
+  .job ul { margin: 3px 0 0; padding-left: 12px; }
+  .job li { font-size: 11.3px; line-height: 1.5; color: #3c5259; margin-bottom: 2px; }
+  .job li::marker { color: var(--teal-600); }
+
+  .edu-item { margin-bottom: 10px; }
+  .edu-item:last-child { margin-bottom: 0; }
+  .edu-item h3 { font-size: 11.8px; margin: 0; font-weight: 700; }
+  .edu-item .org { font-size: 10.8px; color: var(--muted); }
+  .edu-item .meta { font-size: 10.2px; color: var(--teal-700); font-weight: 600; }
+
+  /* Sidebar */
+  .side-block { margin-bottom: 16px; }
+  .side-block:last-child { margin-bottom: 0; }
+
+  .skill-group { margin-bottom: 9px; }
+  .skill-group:last-child { margin-bottom: 0; }
+  .skill-label { font-size: 10px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+  .chip {
+    font-size: 9.3px; line-height: 1.2; padding: 3.5px 7px; border-radius: 5px;
+    background: var(--mint); border: 1px solid #d7ebe6; color: #2c4a50;
+  }
+
+  .side-list { margin: 0; padding-left: 12px; }
+  .side-list li { font-size: 10.6px; line-height: 1.45; color: #3c5259; margin-bottom: 3px; }
+  .side-list li::marker { color: var(--teal-600); }
+
+  .lang-row { display: flex; justify-content: space-between; font-size: 10.8px; padding: 3px 0; border-bottom: 1px dashed #e4efec; }
+  .lang-row:last-child { border-bottom: 0; }
+  .lang-row span:last-child { color: var(--teal-700); font-weight: 600; }
+
+  .license-box {
+    background: var(--mint); border: 1px solid #d7ebe6; border-left: 3px solid var(--teal-600);
+    border-radius: 5px; padding: 8px 10px; font-size: 10.1px; line-height: 1.45; color: #3c5259;
+  }
+  .license-box strong { color: var(--ink); }
+
+  .foot {
+    margin-top: auto; padding-top: 7px; border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; font-size: 8.6px; color: #7a9099;
+  }
+
+  @media print {
+    html, body { background: #fff; }
+    .toolbar { display: none !important; }
+    .page { margin: 0; box-shadow: none; width: 210mm; min-height: 297mm; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a href="index.html">← Back to site</a>
+  <button onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="page">
+  <header class="cv-head">
+    <div>
+      <h1 class="cv-name">Mahmoud Hamed</h1>
+      <p class="cv-role">Pharmacist · Community &amp; Clinical Pharmacy</p>
+      <span class="availability">Available for roles in Saudi Arabia</span>
+    </div>
+    <div class="cv-contact">
+      <span><strong>El Mahalla El Kubra</strong>, Gharbia, Egypt</span>
+      <span>+20 100 477 6559 · WhatsApp</span>
+      <span>mahmoudhamed935@gmail.com</span>
+      <span>Egyptian · requires visa sponsorship</span>
+    </div>
+  </header>
+
+  <div class="cv-body">
+    <!-- MAIN -->
+    <div class="main-col">
+
+      <section class="sec">
+        <h2 class="sec-title">Professional Summary</h2>
+        <p class="summary">
+          Patient-focused pharmacist with a <strong>Bachelor of Pharmacy from Tanta University (Very Good)</strong>
+          and hands-on experience across medical-centre and community pharmacy settings. Skilled in accurate
+          prescription dispensing, OTC recommendations, patient counselling and inventory support. Completed an
+          accredited OTC course at the Faculty of Medicine, Menoufia University, and clinical pharmacy coursework.
+          Fluent in Arabic and English, detail-oriented and team-minded, and seeking a community pharmacist role with
+          <strong>Al Nahdi Medical Company</strong> or <strong>Al Dawaa Pharmacies</strong> in Saudi Arabia.
+        </p>
+      </section>
+
+      <section class="sec">
+        <h2 class="sec-title">Professional Experience</h2>
+
+        <div class="job">
+          <div class="job-top">
+            <h3>Pharmacist — Military Service Placement</h3>
+            <span class="when">Dec 2016 — Present</span>
+          </div>
+          <p class="org">International Medical Center · Egypt</p>
+          <p class="note">Served within the medical centre during the military service period, supporting the pharmacy alongside clinical staff.</p>
+          <ul>
+            <li>Dispense prescriptions with close attention to dose, route, interactions and safe medication handling.</li>
+            <li>Counsel patients on correct use, expected side effects and adherence to treatment.</li>
+            <li>Coordinate with physicians and nursing staff on medication queries and product availability.</li>
+            <li>Maintain storage, labelling and stock standards in line with pharmacy safety practice.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-top">
+            <h3>Community Pharmacist</h3>
+            <span class="when">Previous role</span>
+          </div>
+          <p class="org">Community Pharmacy · Egypt</p>
+          <ul>
+            <li>Recommend over-the-counter products based on symptoms and patient history, referring when needed.</li>
+            <li>Process prescriptions and advise on dosing, administration and potential interactions.</li>
+            <li>Monitor stock levels, expiry dates and product availability to keep the counter running.</li>
+            <li>Build repeat-customer trust through clear, practical counselling and attentive service.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2 class="sec-title">Education</h2>
+        <div class="edu-item">
+          <h3>Bachelor of Pharmacy</h3>
+          <p class="org">Faculty of Pharmacy, Tanta University — Egypt</p>
+          <p class="meta">Graduated May 2016 · Very Good GPA</p>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2 class="sec-title">Courses &amp; Training</h2>
+        <div class="edu-item">
+          <h3>Over-the-Counter (OTC) Course</h3>
+          <p class="org">Faculty of Medicine, Menoufia University · accredited certificate</p>
+        </div>
+        <div class="edu-item">
+          <h3>Clinical Pharmacy Coursework</h3>
+          <p class="org">Tanta University · fourth and fifth year · Excellent</p>
+        </div>
+        <div class="edu-item">
+          <h3>Promotion Course (Elective)</h3>
+          <p class="org">Tanta University · fifth year · Excellent</p>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="side-col">
+
+      <section class="side-block">
+        <h2 class="sec-title">Core Skills</h2>
+        <div class="skill-group">
+          <p class="skill-label">Pharmacy practice</p>
+          <div class="chips">
+            <span class="chip">Prescription dispensing</span>
+            <span class="chip">Medication safety</span>
+            <span class="chip">OTC counselling</span>
+            <span class="chip">Patient education</span>
+            <span class="chip">Adherence support</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-label">Operations</p>
+          <div class="chips">
+            <span class="chip">Inventory support</span>
+            <span class="chip">Stock &amp; expiry checks</span>
+            <span class="chip">Record keeping</span>
+            <span class="chip">Attention to detail</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-label">People &amp; IT</p>
+          <div class="chips">
+            <span class="chip">Patient communication</span>
+            <span class="chip">Teamwork</span>
+            <span class="chip">MS Word</span>
+            <span class="chip">Excel</span>
+            <span class="chip">PowerPoint</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="side-block">
+        <h2 class="sec-title">Languages</h2>
+        <div class="lang-row"><span>Arabic</span><span>Native</span></div>
+        <div class="lang-row"><span>English</span><span>Fluent</span></div>
+      </section>
+
+      <section class="side-block">
+        <h2 class="sec-title">Saudi Licensure</h2>
+        <div class="license-box">
+          <strong>SCFHS registration not yet initiated.</strong>
+          Ready to begin <strong>Dataflow</strong> verification and the <strong>Prometric</strong> examination,
+          and committed to completing Saudi licensure promptly upon offer.
+        </div>
+      </section>
+
+      <section class="side-block">
+        <h2 class="sec-title">Additional Information</h2>
+        <ul class="side-list">
+          <li>Military service: completed</li>
+          <li>Nationality: Egyptian</li>
+          <li>Willing to relocate within KSA</li>
+          <li>References available on request</li>
+        </ul>
+      </section>
+
+    </aside>
+  </div>
+
+  <footer class="foot">
+    <span>Mahmoud Hamed · Pharmacist</span>
+    <span>Curriculum Vitae · 2026</span>
+  </footer>
+</div>
+
+</body>
+</html>
